@@ -17,6 +17,7 @@ public class ExamserverApplication implements CommandLineRunner {
 
 	@Autowired
 	private UserService userService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ExamserverApplication.class, args);
 	}
@@ -24,14 +25,17 @@ public class ExamserverApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("starting code");
-		User user  = new User();
 
-		user.setUserName("aarushi02");
+		User user = new User();
+		user.setUserName("aarushi123");
 		user.setFirstName("Aarushi");
 		user.setLastName("Garg");
-		user.setPassword("abc");
 		user.setEmail("abc@gmail.com");
+		user.setPassword("abc");
+		user.setPhone("1234567890");
 		user.setProfile("default.png");
+		user.setEnabled(true);
+
 
 		Role role1 = new Role();
 		role1.setRoleId(44L);
@@ -46,6 +50,10 @@ public class ExamserverApplication implements CommandLineRunner {
 
 		User user1 = this.userService.createUser(user, userRoleSet);
 		System.out.println(user1.getUserName());
+
+
+
+
 
 	}
 }

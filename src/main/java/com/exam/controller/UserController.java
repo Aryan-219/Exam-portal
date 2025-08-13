@@ -1,10 +1,14 @@
 package com.exam.controller;
 
+import com.exam.helper.UserNotFoundException;
 import com.exam.models.Role;
 import com.exam.models.User;
 import com.exam.models.UserRole;
 import com.exam.service.UserService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
@@ -50,4 +54,15 @@ public class UserController {
     }
 
     //update api
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<?> exceptionHandler (UserNotFoundException ex) {
+        String errorMessage = ex.getMessage(); // Or "User not found"
+
+        // Return HTTP status with message
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(errorMessage);
+    }
 }
+

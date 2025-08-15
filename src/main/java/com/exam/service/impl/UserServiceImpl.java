@@ -6,6 +6,7 @@ import com.exam.repository.RoleRepository;
 import com.exam.repository.UserRepository;
 import com.exam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -14,6 +15,7 @@ import java.util.Set;
 public class UserServiceImpl implements UserService {
 
 
+    UserDetails
     @Autowired
     private UserRepository userRepository;
 

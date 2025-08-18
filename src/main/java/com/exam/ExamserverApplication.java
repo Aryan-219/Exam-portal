@@ -50,10 +50,5 @@ public class ExamserverApplication implements CommandLineRunner {
 
 		User user1 = this.userService.createUser(user, userRoleSet);
 		System.out.println(user1.getUserName());
-
-
-
-
-
 	}
 }

@@ -6,6 +6,6 @@ import com.exam.models.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    public User findByuserName(String username);
+    public User findByUserName(String username);
 
 }

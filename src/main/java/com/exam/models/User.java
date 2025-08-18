@@ -82,14 +82,7 @@ public class User implements UserDetails
         this.userName = userName;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
-    }
 
-    public String getPassword() {
-        return password;
-    }
 
     @Override
     public String getUsername() {
@@ -111,8 +104,19 @@ public class User implements UserDetails
         return true;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
 
-    public String getPassword () { return password; }
+        Set<Authority> set = new HashSet<>();
+        this.userRoles.forEach(userRole -> {
+            set.add(new Authority(userRole.getRole().getRoleName()));
+        });
+
+        return null;
+    }
+
+    @Override
+    public String getPassword() { return this.password;}
 
     public void setPassword(String password) {
         this.password = password;

@@ -15,7 +15,7 @@ import java.util.Set;
 public class UserServiceImpl implements UserService {
 
 
-    UserDetails
+
     @Autowired
     private UserRepository userRepository;
 
@@ -26,16 +26,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createUser(User user, Set<UserRole> userRoles) throws Exception {
 
-       User local= this.userRepository.findByuserName(user.getUserName());
-       if(local!= null){
+       User local= this.userRepository.findByUserName(user.getUserName());
+       if(local!= null) {
            System.out.println("User is already there");
            return local;
-       }
-       else{
-           //create user
+       } else{
+
            for(UserRole ur: userRoles){
                roleRepository.save(ur.getRole());
            }
+
            user.getUserRoles().addAll(userRoles);
            local = this.userRepository.save(user);
        }
@@ -45,7 +45,8 @@ public class UserServiceImpl implements UserService {
     // getting user by username
     @Override
     public User getUser(String username) {
-        return this.userRepository.findByuserName(username);
+
+        return this.userRepository.findByUserName(username);
     }
 
     @Override
